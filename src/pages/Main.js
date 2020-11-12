@@ -1,22 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import '../index.scss'
 import {Table} from "../components/table";
-import {withMobileDialog} from "@material-ui/core";
+import {useSelector} from "react-redux";
 
 export const Main = (props) => {
 
-    const [products, setProducts] = useState([])
-
-    useEffect(() => {
-
-        let products = localStorage.getItem('products')
-
-        if (products) {
-            setProducts(JSON.parse(products))
-        }
-
-    }, [])
-
+    const products = useSelector(state => state)
 
     return (
         <div className='main-container'>

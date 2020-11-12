@@ -1,7 +1,7 @@
 import React from "react";
 import {Header} from "./components/header";
 import {Main} from "./pages/Main";
-import {BrowserRouter as Router, Route, Switch, withRouter, Redirect} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import {DetailsProduct} from "./pages/DetailsProduct";
 
 function App(props) {

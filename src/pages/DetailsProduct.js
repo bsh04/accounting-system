@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import '../index.scss'
 import {Alert} from "../components/alert";
+import {useSelector} from "react-redux";
 
 export const DetailsProduct = (props) => {
 
@@ -11,6 +12,8 @@ export const DetailsProduct = (props) => {
     const [isAdding, setIsAdding] = useState(false)
     const [error, setError] = useState(false)
     // const [openAlert, setOpenAlert] = useState(false)
+
+    let store = useSelector(state => state)
 
     useEffect(() => {
         let state = props.location.state
@@ -29,7 +32,6 @@ export const DetailsProduct = (props) => {
                 alert('У вас буквы в поле для чисел')
                 return false
             } else {
-                console.log('number')
                 return true
             }
         } else {
@@ -39,9 +41,8 @@ export const DetailsProduct = (props) => {
     }
 
     const handleCreate = () => {
-        let store = localStorage.getItem('products')
-        if (store) {
-            let arr = JSON.parse(store)
+        if (store.length !== 0) {
+            let arr = store
             arr.push({name: name, count: count})
             localStorage.setItem('products', JSON.stringify(arr))
         } else {
@@ -56,8 +57,7 @@ export const DetailsProduct = (props) => {
     }
 
     const handleChange = () => {
-        let store = localStorage.getItem('products')
-        let newStore = JSON.parse(store)
+        let newStore = store
 
         newStore[props.location.state.index].count = count
         newStore[props.location.state.index].name = name
