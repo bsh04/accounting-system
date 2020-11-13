@@ -1,4 +1,4 @@
-import {addItem, loadState, removeItem, updateItem} from "./localStorage";
+import {addItem, generateProducts, loadState, removeItem, updateItem} from "./localStorage";
 
 const initialState = loadState()
 
@@ -9,6 +9,8 @@ export default function products(state = initialState, action) {
             return loadState();
         case 'ADD_PRODUCT':
             return addItem(action.payload);
+        case 'GENERATE_PRODUCTS':
+            return generateProducts(action.payload)
         case 'UPDATE_PRODUCT':
             return updateItem(action.payload);
         case 'DELETE_PRODUCT':

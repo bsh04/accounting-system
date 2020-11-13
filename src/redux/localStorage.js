@@ -41,6 +41,11 @@ export const addItem = (item) => {
     }
 }
 
+export const generateProducts = (item) => {
+        localStorage.setItem('products', JSON.stringify(item))
+        return loadState()
+}
+
 export const updateItem = (item) => {
     try {
         let newStore = loadState()

@@ -3,6 +3,7 @@ import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SearchIcon from '@material-ui/icons/Search';
 import {useDispatch, useSelector} from "react-redux";
+import {Pagination} from "./pagination";
 
 export const Table = ({history}) => {
 
@@ -13,33 +14,76 @@ export const Table = ({history}) => {
     const [products, setProducts] = useState(initState)
 
     const [searchValue, setSearchValue] = useState('')
+    const [productNumber, setProductNumber] = useState(0)
+    const [selectPage, setSelectPage] = useState(1)
 
-    useEffect(() => {
-        setProducts(initState)
-    }, [initState])
+    const handleSelectPage = page => {
+        setSelectPage(page)
+        let state = searchValue.trim() !== '' ? products : initState
+        if (page === 1) {
+            setProducts(productNumber === 0 ? state : state.slice(0, productNumber))
+        } else if (page) {
+            let newState = state.slice((page - 1) * productNumber, (page - 1) * productNumber - 1 + productNumber + 1)
+            if (newState.length !== 0) {
+                setProducts(newState)
+            } else {
+                handleSelectPage(selectPage - 1)
+            }
+        }
+        history.push(`?page=${page}`)
+    }
 
-    useEffect(() => {
+    const checkSelected = (page = null) => {
+        if (productNumber !== 0) {
+            setProducts(initState.slice(0, productNumber))
+            handleSelectPage(page ?? selectPage)
+        } else {
+            setProducts(initState)
+        }
+    }
+
+    const handleSearch = () => {
         let arr = []
         let isFindings = false
         if (searchValue.trim()) {
-            for (let i = 0; i < products.length; i++) {
-                if (String(products[i].name).includes(searchValue)) {
-                    arr.push(products[i])
-                    setProducts(arr)
+            for (let i = 0; i < initState.length; i++) {
+                if (String(initState[i].name).includes(searchValue)) {
+                    arr.push({
+                        name: initState[i].name,
+                        count: initState[i].count,
+                        index: i
+                    })
                     isFindings = true
                 }
             }
             if (!isFindings) setProducts([])
+            setProducts(arr)
+            setSelectPage(1)
         } else {
-            setProducts(initState)
+            checkSelected()
         }
+    }
+
+    useEffect(() => {
+        checkSelected()
+        if (searchValue !== '') handleSearch()
+    }, [initState])
+
+
+    useEffect(() => {
+        handleSearch()
     }, [searchValue])
+
+    useEffect(() => {
+        setSelectPage(1)
+        checkSelected(1)
+    }, [productNumber])
 
     const renderItems = () => {
         return products.map((item, index) => {
             return (
                 <tr key={index}>
-                    <th scope="row">{index + 1}</th>
+                    <th scope="row">{productNumber * (selectPage - 1) + index + 1}</th>
                     <td>{item.name}</td>
                     <td>{item.count}</td>
                     <td>
@@ -48,7 +92,13 @@ export const Table = ({history}) => {
                             <EditIcon/>
                         </button>
                         <button type="button" className="btn btn-danger"
-                                onClick={() => dispatch({type: 'DELETE_PRODUCT', payload: index})}>
+                                onClick={() => {
+                                    dispatch({
+                                        type: 'DELETE_PRODUCT',
+                                        payload: searchValue !== '' ? item.index : productNumber * (selectPage - 1) + index
+                                    })
+                                }}
+                        >
                             <DeleteIcon/></button>
                     </td>
                 </tr>
@@ -58,19 +108,34 @@ export const Table = ({history}) => {
 
     return (
         <div>
-            <div className="input-group flex-nowrap pb-4">
-                <div className="input-group-prepend">
-                    <span className="input-group-text" id="addon-wrapping"><SearchIcon/></span>
+            <div className='table-container'>
+                <div className="input-group flex-nowrap w-50">
+                    <div className="input-group-prepend">
+                        <span className="input-group-text" id="addon-wrapping"><SearchIcon/></span>
+                    </div>
+                    <input type="text" className="form-control" placeholder="Поиск по названию товара"
+                           aria-label="Username"
+                           aria-describedby="addon-wrapping" value={searchValue}
+                           onChange={e => setSearchValue(e.target.value)}/>
                 </div>
-                <input type="text" className="form-control" placeholder="Поиск по названию товара"
-                       aria-label="Username"
-                       aria-describedby="addon-wrapping" value={searchValue}
-                       onChange={e => setSearchValue(e.target.value)}/>
+                <div className="dropdown d-flex align-items-center">
+                    <p className='m-0 pr-3'>Товаров на странице</p>
+                    <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {productNumber === 0 ? 'Все' : productNumber}
+                    </button>
+                    <div className="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+                        <a className="dropdown-item" onClick={() => setProductNumber(5)}>5</a>
+                        <a className="dropdown-item" onClick={() => setProductNumber(10)}>10</a>
+                        <a className="dropdown-item" onClick={() => setProductNumber(25)}>25</a>
+                        <a className="dropdown-item" onClick={() => setProductNumber(0)}>Все</a>
+                    </div>
+                </div>
             </div>
             {
                 products.length !== 0
                     ?
-                    <table className="table">
+                    <table className="table w-100">
                         <thead className="thead-dark">
                         <tr>
                             <th scope="col">#</th>
@@ -88,6 +153,11 @@ export const Table = ({history}) => {
 
             }
 
+            <Pagination
+                initialPage={selectPage}
+                numberOfPages={productNumber !== 0 && Math.ceil(searchValue ? products.length / productNumber : initState.length / productNumber)}
+                onPageSelect={(page) => handleSelectPage(page)}
+            />
         </div>
     );
 };

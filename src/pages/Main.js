@@ -10,7 +10,7 @@ export const Main = (props) => {
             <h1>Таблица</h1>
             <div className='main-container__table'>
                 <Table history={props.history}/>
-                <button type="button" className="btn btn-success"
+                <button type="button" className="btn btn-success mt-4"
                         onClick={() => props.history.push({pathname: '/add', state: {add: true}})}>Добавить продукт
                 </button>
             </div>
