@@ -1,7 +1,6 @@
 import React from 'react';
-import '../index.scss'
 import {CustomTable} from "../components/CustomTable";
-import {useSelector} from "react-redux";
+import '../index.scss'
 
 export const Main = (props) => {
 

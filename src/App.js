@@ -1,11 +1,11 @@
 import React, {useState} from "react";
-import {CustomHeader} from "./components/CustomHeader";
-import {Main} from "./pages/Main";
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import {DetailsProduct} from "./pages/DetailsProduct";
-import Generate from "./pages/Generate";
+import {Generate} from "./pages/Generate";
 import {AlertContext} from "./context/AlertContext";
 import {CustomAlert} from "./components/CustomAlert";
+import {CustomHeader} from "./components/CustomHeader";
+import {Main} from "./pages/Main";
 
 function App() {
 

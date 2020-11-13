@@ -1,7 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react';
-import '../index.scss'
+import React, {useContext} from 'react';
 import {AlertContext} from "../context/AlertContext";
 import CloseIcon from '@material-ui/icons/Close';
+import '../index.scss'
 
 export const CustomAlert = ({isShow, title}) => {
 

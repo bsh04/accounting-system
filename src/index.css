@@ -20,7 +20,7 @@ code {
   padding-top: 20px;
 }
 
-.true-pagination {
+.custom-pagination {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
@@ -29,10 +29,10 @@ code {
   font-size: 18px;
   max-width: 600px;
 }
-.true-pagination .rotation-180 {
+.custom-pagination .rotation-180 {
   transform: rotateY(180deg);
 }
-.true-pagination .pagination__item {
+.custom-pagination .pagination__item {
   width: 42px;
   height: 42px;
   padding: 7px;
@@ -41,21 +41,21 @@ code {
   cursor: pointer;
   color: #c3c3c3;
 }
-.true-pagination .pagination__item p {
+.custom-pagination .pagination__item p {
   text-align: center;
 }
-.true-pagination .pagination__item_dotted {
+.custom-pagination .pagination__item_dotted {
   margin-bottom: -5px;
 }
-.true-pagination .pagination__item:hover {
+.custom-pagination .pagination__item:hover {
   background-color: #e8e8e8;
 }
-.true-pagination .pagination__item_active {
+.custom-pagination .pagination__item_active {
   font-size: 1.1rem;
   line-height: 1.8rem;
   background-color: #e8e8e8e7;
 }
-.true-pagination span.pagination__item {
+.custom-pagination span.pagination__item {
   color: grey;
 }
 

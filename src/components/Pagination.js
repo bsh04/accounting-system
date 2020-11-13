@@ -50,7 +50,7 @@ export const Pagination = ({numberOfPages = 0, initialPage = parsePage(), onPage
 
     if (numberOfPages !== 0) {
         return (
-            <div className="true-pagination">
+            <div className="custom-pagination">
                 <DoubleArrowIcon
                     className='rotation-180 pagination__item'
                     onClick={() => setCurrentPage(1)}
@@ -85,9 +85,9 @@ export const Pagination = ({numberOfPages = 0, initialPage = parsePage(), onPage
                 />
             </div>
         )
-    } else {
-        return null
     }
+
+    return null
 }
 
 function parsePage() {

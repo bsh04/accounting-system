@@ -8,10 +8,7 @@ import {Pagination} from "./Pagination";
 export const CustomTable = ({history}) => {
 
     const dispatch = useDispatch()
-
-
     const store = useSelector(value => value)
-
     const initStateNumber = Number(store.offset)
     const initStateProducts = store.products
 

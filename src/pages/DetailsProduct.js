@@ -1,23 +1,19 @@
 import React, {useContext, useEffect, useState} from 'react';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import '../index.scss'
-// import {CustomAlert} from "../components/alert";
 import {useDispatch} from "react-redux";
 import {AlertContext} from "../context/AlertContext";
+import '../index.scss'
 
 export const DetailsProduct = (props) => {
+
+    const alert = useContext(AlertContext)
+    const dispatch = useDispatch()
 
     const [name, setName] = useState('')
     const [count, setCount] = useState('')
     const [more, setMore] = useState(false)
-    // const [isCreate, setIsCreate] = useState(false)
     const [isAdding, setIsAdding] = useState(false)
-    // const [error, setError] = useState(false)
-    // const [openAlert, setOpenAlert] = useState(false)
 
-    const alert = useContext(AlertContext)
-
-    const dispatch = useDispatch()
 
     useEffect(() => {
         let state = props.location.state
@@ -56,8 +52,6 @@ export const DetailsProduct = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        // setOpenAlert(true)
-        // setIsCreate(true)
         if (validator()) {
             isAdding ? handleCreate() : handleChange()
         }
@@ -67,7 +61,6 @@ export const DetailsProduct = (props) => {
         <div className='add-product-container'>
             <h1>{isAdding ? 'Добавление' : 'Изменение'} товара</h1>
             <form>
-                {/*<CustomAlert isShow={openAlert} title={'Ошибочка...'}/>*/}
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1">Название товара</label>
                     <input type="email" className={`form-control`}

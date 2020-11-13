@@ -49,7 +49,6 @@ export const generateProducts = (item) => {
 export const updateItem = (item) => {
     try {
         let newStore = loadState()
-
         newStore[item.index].count = item.count
         newStore[item.index].name = item.name
 

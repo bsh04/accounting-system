@@ -4,7 +4,7 @@ import randomWords from 'random-words';
 import {useDispatch} from "react-redux";
 import {AlertContext} from "../context/AlertContext";
 
-const Generate = (props) => {
+export const Generate = (props) => {
 
     const [count, setCount] = useState('')
 
@@ -56,5 +56,3 @@ const Generate = (props) => {
         </div>
     );
 };
-
-export default Generate;
