@@ -16,7 +16,10 @@ export const Pagination = ({numberOfPages = 0, initialPage = parsePage(), onPage
 
     useEffect(() => {
         if (isMounted) {
-            window.scrollTo(0, 0)
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
             onPageSelect(currentPage);
         }
     }, [currentPage])

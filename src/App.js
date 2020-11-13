@@ -1,15 +1,24 @@
-import React from "react";
-import {Header} from "./components/header";
+import React, {useState} from "react";
+import {CustomHeader} from "./components/CustomHeader";
 import {Main} from "./pages/Main";
 import {BrowserRouter as Router, Route, Switch, Redirect} from 'react-router-dom';
 import {DetailsProduct} from "./pages/DetailsProduct";
 import Generate from "./pages/Generate";
+import {AlertContext} from "./context/AlertContext";
+import {CustomAlert} from "./components/CustomAlert";
 
-function App(props) {
+function App() {
+
+    const [alert, setAlert] = useState({show: false, title: ''})
+
     return (
-        <div>
+        <AlertContext.Provider value={{
+            alertState: () => alert,
+            setAlertState: ({show, title}) => setAlert({show: show, title: title}),
+        }}>
+            <CustomAlert isShow={alert.show} type={alert.type} title={alert.title}/>
             <Router>
-                <Header/>
+                <CustomHeader/>
                 <div className='container'>
                     <Switch>
                         <Route path='/' exact component={Main}/>
@@ -20,7 +29,7 @@ function App(props) {
                     </Switch>
                 </div>
             </Router>
-        </div>
+        </AlertContext.Provider>
     );
 }
 

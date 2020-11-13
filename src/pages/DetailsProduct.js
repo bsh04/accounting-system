@@ -1,8 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import '../index.scss'
-// import {Alert} from "../components/alert";
+// import {CustomAlert} from "../components/alert";
 import {useDispatch} from "react-redux";
+import {AlertContext} from "../context/AlertContext";
 
 export const DetailsProduct = (props) => {
 
@@ -13,6 +14,8 @@ export const DetailsProduct = (props) => {
     const [isAdding, setIsAdding] = useState(false)
     // const [error, setError] = useState(false)
     // const [openAlert, setOpenAlert] = useState(false)
+
+    const alert = useContext(AlertContext)
 
     const dispatch = useDispatch()
 
@@ -26,17 +29,11 @@ export const DetailsProduct = (props) => {
         }
     }, [])
 
-
     const validator = () => {
         if (name.trim() !== '' && count.trim() !== '') {
-            if (!count.match(/^\d+$/)) {
-                alert('У вас буквы в поле для чисел')
-                return false
-            } else {
-                return true
-            }
+            return true
         } else {
-            alert('пустых полей не должно быть')
+            alert.setAlertState({show: true, title: 'Пожалуйста, заполните все поля', type: 'danger'})
             return false
         }
     }
@@ -70,7 +67,7 @@ export const DetailsProduct = (props) => {
         <div className='add-product-container'>
             <h1>{isAdding ? 'Добавление' : 'Изменение'} товара</h1>
             <form>
-                {/*<Alert isShow={openAlert} title={'Ошибочка...'}/>*/}
+                {/*<CustomAlert isShow={openAlert} title={'Ошибочка...'}/>*/}
                 <div className="form-group">
                     <label htmlFor="exampleInputEmail1">Название товара</label>
                     <input type="email" className={`form-control`}
@@ -92,11 +89,11 @@ export const DetailsProduct = (props) => {
                         <label className="form-check-label" htmlFor="exampleCheck1">Добавить ещё один</label>
                     </div>
                 }
-                    <button className="btn btn-success"
-                            onClick={(e) => handleSubmit(e)}>{isAdding ? 'Создать' : 'Применить изменения'}</button>
-                    <button className="btn btn-primary ml-4"
-                            onClick={() => props.history.push('/')}><ArrowBackIcon className='mr-2'/>Вернуться к таблице
-                    </button>
+                <button className="btn btn-success"
+                        onClick={(e) => handleSubmit(e)}>{isAdding ? 'Создать' : 'Применить изменения'}</button>
+                <button className="btn btn-primary ml-4"
+                        onClick={() => props.history.push('/')}><ArrowBackIcon className='mr-2'/>Вернуться к таблице
+                </button>
             </form>
         </div>
     );

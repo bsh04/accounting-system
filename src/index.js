@@ -7,15 +7,16 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import {store} from './redux/store';
 import {Provider} from "react-redux";
 
+
 ReactDOM.render(
     <Provider store={store}>
-            <React.StrictMode>
-                <Router>
-                    <Switch>
-                        <Route path="/*" component={App}/>
-                    </Switch>
-                </Router>
-            </React.StrictMode>
+        <React.StrictMode>
+            <Router>
+                <Switch>
+                    <Route path="/*" component={App}/>
+                </Switch>
+            </Router>
+        </React.StrictMode>
     </Provider>,
     document.getElementById('root')
 );

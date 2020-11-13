@@ -1,6 +1,6 @@
 import React from 'react';
 import '../index.scss'
-import {Table} from "../components/table";
+import {CustomTable} from "../components/CustomTable";
 import {useSelector} from "react-redux";
 
 export const Main = (props) => {
@@ -9,7 +9,7 @@ export const Main = (props) => {
         <div className='main-container'>
             <h1>Таблица</h1>
             <div className='main-container__table'>
-                <Table history={props.history}/>
+                <CustomTable history={props.history}/>
                 <button type="button" className="btn btn-success mt-4"
                         onClick={() => props.history.push({pathname: '/add', state: {add: true}})}>Добавить продукт
                 </button>
