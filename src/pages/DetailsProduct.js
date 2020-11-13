@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import '../index.scss'
 // import {Alert} from "../components/alert";
 import {useDispatch} from "react-redux";
@@ -91,8 +92,11 @@ export const DetailsProduct = (props) => {
                         <label className="form-check-label" htmlFor="exampleCheck1">Добавить ещё один</label>
                     </div>
                 }
-                <button className="btn btn-primary"
-                        onClick={(e) => handleSubmit(e)}>{isAdding ? 'Создать' : 'Применить изменения'}</button>
+                    <button className="btn btn-success"
+                            onClick={(e) => handleSubmit(e)}>{isAdding ? 'Создать' : 'Применить изменения'}</button>
+                    <button className="btn btn-primary ml-4"
+                            onClick={() => props.history.push('/')}><ArrowBackIcon className='mr-2'/>Вернуться к таблице
+                    </button>
             </form>
         </div>
     );
