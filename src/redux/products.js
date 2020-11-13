@@ -1,14 +1,18 @@
-export default function products(state = false, action) {
+import {addItem, loadState, removeItem, updateItem} from "./localStorage";
+
+const initialState = loadState()
+
+export default function products(state = initialState, action) {
     switch(action.type)
     {
         case 'GET_PRODUCTS':
-            return action.payload;
+            return loadState();
         case 'ADD_PRODUCT':
-            return action.payload;
+            return addItem(action.payload);
         case 'UPDATE_PRODUCT':
-            return action.payload;
+            return updateItem(action.payload);
         case 'DELETE_PRODUCT':
-            return false;
+            return removeItem(action.payload)
         default:
             return state;
     }

@@ -1,19 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import '../index.scss'
-import {Alert} from "../components/alert";
-import {useSelector} from "react-redux";
+// import {Alert} from "../components/alert";
+import {useDispatch} from "react-redux";
 
 export const DetailsProduct = (props) => {
 
     const [name, setName] = useState('')
     const [count, setCount] = useState('')
     const [more, setMore] = useState(false)
-    const [isCreate, setIsCreate] = useState(false)
+    // const [isCreate, setIsCreate] = useState(false)
     const [isAdding, setIsAdding] = useState(false)
-    const [error, setError] = useState(false)
+    // const [error, setError] = useState(false)
     // const [openAlert, setOpenAlert] = useState(false)
 
-    let store = useSelector(state => state)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         let state = props.location.state
@@ -41,13 +41,7 @@ export const DetailsProduct = (props) => {
     }
 
     const handleCreate = () => {
-        if (store.length !== 0) {
-            let arr = store
-            arr.push({name: name, count: count})
-            localStorage.setItem('products', JSON.stringify(arr))
-        } else {
-            localStorage.setItem('products', JSON.stringify([{name: name, count: count}]))
-        }
+        dispatch({type: 'ADD_PRODUCT', payload: {name, count}})
         if (more) {
             setCount('')
             setName('')
@@ -57,12 +51,7 @@ export const DetailsProduct = (props) => {
     }
 
     const handleChange = () => {
-        let newStore = store
-
-        newStore[props.location.state.index].count = count
-        newStore[props.location.state.index].name = name
-
-        localStorage.setItem('products', JSON.stringify(newStore))
+        dispatch({type: 'UPDATE_PRODUCT', payload: {name, count, index: props.location.state.index}})
         props.history.push('/')
     }
 

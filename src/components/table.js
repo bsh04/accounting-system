@@ -1,13 +1,11 @@
 import React from 'react';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import {useDispatch} from "react-redux";
 
 export const Table = ({items, history}) => {
 
-    const handleRemove = (index) => {
-        let arr = items.filter((_, i) => i !== index)
-        localStorage.setItem('products', JSON.stringify(arr))
-    }
+    const dispatch = useDispatch()
 
     const renderItems = () => {
         return items.map((item, index) => {
@@ -18,9 +16,11 @@ export const Table = ({items, history}) => {
                     <td>{item.count}</td>
                     <td>
                         <button type="button" className="btn btn-success"
-                                onClick={() => history.push({pathname: '/edit', state: {item, index, add: false}})}><EditIcon/>
+                                onClick={() => history.push({pathname: '/edit', state: {item, index, add: false}})}>
+                            <EditIcon/>
                         </button>
-                        <button type="button" className="btn btn-danger" onClick={() => handleRemove(index)}>
+                        <button type="button" className="btn btn-danger"
+                                onClick={() => dispatch({type: 'DELETE_PRODUCT', payload: index})}>
                             <DeleteIcon/></button>
                     </td>
                 </tr>

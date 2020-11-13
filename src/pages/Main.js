@@ -1,11 +1,11 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import '../index.scss'
 import {Table} from "../components/table";
 import {useSelector} from "react-redux";
 
 export const Main = (props) => {
 
-    const products = useSelector(state => state)
+    const products = useSelector(value => value)
 
     return (
         <div className='main-container'>
