@@ -3,6 +3,9 @@ import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import randomWords from 'random-words';
 import {useDispatch} from "react-redux";
 import {AlertContext} from "../context/AlertContext";
+import {IDGenerator} from "../tools/idGenerator";
+import {MAX_COUNT_PRODUCT_GENERATE} from '../tools/constants'
+import {generateProducts} from "../redux/productsActions";
 
 export const Generate = (props) => {
 
@@ -17,19 +20,20 @@ export const Generate = (props) => {
 
         let arr = []
 
-        if (count < 75 && Number(count) !== 0 && count !== '') {
+        if (count <= MAX_COUNT_PRODUCT_GENERATE && Number(count) !== 0 && count !== '') {
             for (let i = 0; i < count; i++) {
                 arr.push({
+                    id: IDGenerator(),
                     name: randomWords(),
                     count: (Math.random() * 100).toFixed()
                 })
             }
 
-            dispatch({type: 'GENERATE_PRODUCTS', payload: arr})
+            dispatch(generateProducts(arr))
             props.history.push('/')
 
         } else {
-            alert.setAlertState({show: true, title: 'Введите корректное значение (от 1 до 75)'})
+            alert.setAlertState({show: true, title: `Введите корректное значение (от 1 до ${MAX_COUNT_PRODUCT_GENERATE})`})
         }
     }
 
@@ -37,7 +41,6 @@ export const Generate = (props) => {
         <div className='add-product-container'>
             <h1>Сгенерировать товары</h1>
             <form>
-                {/*<CustomAlert isShow={openAlert} title={'Ошибочка...'}/>*/}
                 <div className="form-group">
                     <label htmlFor="exampleInputPassword1">Количество</label>
                     <input type="number" className={`form-control count-input`}

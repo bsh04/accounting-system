@@ -3,6 +3,8 @@ import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import {useDispatch} from "react-redux";
 import {AlertContext} from "../context/AlertContext";
 import '../index.scss'
+import {addItem, addProduct, updateProduct} from "../redux/productsActions";
+import {IDGenerator} from "../tools/idGenerator";
 
 export const DetailsProduct = (props) => {
 
@@ -11,6 +13,7 @@ export const DetailsProduct = (props) => {
 
     const [name, setName] = useState('')
     const [count, setCount] = useState('')
+    const [id, setId] = useState(null)
     const [more, setMore] = useState(false)
     const [isAdding, setIsAdding] = useState(false)
 
@@ -22,6 +25,7 @@ export const DetailsProduct = (props) => {
         } else {
             setName(state.item.name)
             setCount(state.item.count)
+            setId(state.item.id)
         }
     }, [])
 
@@ -35,7 +39,7 @@ export const DetailsProduct = (props) => {
     }
 
     const handleCreate = () => {
-        dispatch({type: 'ADD_PRODUCT', payload: {name, count}})
+        dispatch(addProduct({name, count, id: IDGenerator()}))
         if (more) {
             setCount('')
             setName('')
@@ -45,7 +49,7 @@ export const DetailsProduct = (props) => {
     }
 
     const handleChange = () => {
-        dispatch({type: 'UPDATE_PRODUCT', payload: {name, count, index: props.location.state.index}})
+        dispatch(updateProduct({name, count, id}))
         props.history.push('/')
     }
 

@@ -24,7 +24,7 @@ function App() {
                         <Route path='/' exact component={Main}/>
                         <Route path='/add' exact component={DetailsProduct}/>
                         <Route path='/edit' exact component={DetailsProduct}/>
-                        <Route path='/for-test' exact component={Generate}/>
+                        <Route path='/generate' exact component={Generate}/>
                         <Redirect from='/*' to='/'/>
                     </Switch>
                 </div>
