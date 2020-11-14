@@ -1,13 +1,15 @@
-import {loadState, updateOffset} from "./offsetActions";
+import {UPDATE_OFFSET} from "./types";
 
-const initialState = loadState()
+const store = localStorage.getItem('offset');
+
+const initialState = {
+    offset: store ?? 0
+}
 
 export default function productsReducer(state = initialState, action) {
     switch (action.type) {
-        case 'GET_OFFSET':
-            return loadState();
-        case 'UPDATE_OFFSET':
-            return updateOffset(action.payload);
+        case UPDATE_OFFSET:
+            return {...state, offset: action.payload};
         default:
             return state;
     }

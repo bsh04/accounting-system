@@ -1,60 +1,54 @@
-export const loadState = () => {
-    try {
-        const serializedState = localStorage.getItem('products');
-        if (!serializedState) {
-            return [];
+import {ADD_PRODUCT, DELETE_PRODUCT, GENERATE_PRODUCTS, UPDATE_PRODUCT} from "./types";
+
+const initState = () => localStorage.getItem('products');
+
+export const removeProduct = (id) => {
+    let arr = [...JSON.parse(initState())].filter(item => item.id !== id)
+    localStorage.setItem('products', JSON.stringify(arr))
+    return {
+        type: DELETE_PRODUCT,
+        payload: arr
+    }
+}
+
+export const addProduct = (item) => {
+    const product = {name: item.name, count: item.count, id: item.id}
+    if (initState() && JSON.parse(initState()).length !== 0) {
+        let newProducts = [...JSON.parse(initState()), product]
+        localStorage.setItem('products', JSON.stringify(newProducts))
+        return {
+            type: ADD_PRODUCT,
+            payload: product
         }
-        return JSON.parse(serializedState);
-    } catch (err) {
-        return [];
-    }
-};
-
-export const saveState = (state) => {
-    try {
-        const serializedState = JSON.stringify(state)
-        localStorage.setItem('products', serializedState);
-    } catch (err) {
-        return loadState();
-    }
-};
-
-export const removeItem = (index) => {
-    try {
-        let arr = loadState().filter((_, i) => i !== index)
-        localStorage.setItem('products', JSON.stringify(arr))
-        return loadState()
-    } catch (err) {
-        return loadState();
-    }
-}
-
-export const addItem = (item) => {
-    if (loadState().length !== 0) {
-        let arr = loadState()
-        arr.push({name: item.name, count: item.count})
-        localStorage.setItem('products', JSON.stringify(arr))
-        return loadState()
     } else {
-        localStorage.setItem('products', JSON.stringify([{name: item.name, count: item.count}]))
-        return loadState()
+        localStorage.setItem('products', JSON.stringify([product]))
+        return {
+            type: ADD_PRODUCT,
+            payload: product
+        }
     }
 }
 
-export const generateProducts = (item) => {
-        localStorage.setItem('products', JSON.stringify(item))
-        return loadState()
+export const generateProducts = (products) => {
+    localStorage.setItem('products', JSON.stringify(products))
+    return {
+        type: GENERATE_PRODUCTS,
+        payload: products
+    }
 }
 
-export const updateItem = (item) => {
-    try {
-        let newStore = loadState()
-        newStore[item.index].count = item.count
-        newStore[item.index].name = item.name
+export const updateProduct = (item) => {
+    let newProducts = JSON.parse(initState())
+    newProducts.map(product => {
+        if (product.id === item.id) {
+            product.count = item.count
+            product.name = item.name
+        }
+    })
 
-        localStorage.setItem('products', JSON.stringify(newStore))
-        return loadState()
-    } catch (err) {
-        return loadState()
+    localStorage.setItem('products', JSON.stringify(newProducts))
+    return {
+        type: UPDATE_PRODUCT,
+        payload: newProducts
     }
 }

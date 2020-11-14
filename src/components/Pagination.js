@@ -6,13 +6,17 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import '../index.scss'
 
 
-export const Pagination = ({numberOfPages = 0, initialPage = parsePage(), onPageSelect = 1}) => {
+export const Pagination = ({numberOfPages = 1, initialPage = parsePage(), onPageSelect = 1}) => {
     const [currentPage, setCurrentPage] = useState(initialPage);
     const [isMounted, setMounted] = useState(false);
 
     useEffect(() => {
         setMounted(true);
     }, []);
+
+    useEffect(() => {
+        setCurrentPage(initialPage)
+    }, [initialPage])
 
     useEffect(() => {
         if (isMounted) {

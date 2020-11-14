@@ -18,7 +18,7 @@ export const CustomHeader = () => {
                         <Link className="nav-link" to={{pathname: '/add', state: {add: true}}}>Добавить</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to={{pathname: '/for-test', state: {add: true}}}>Сгенерировать</Link>
+                        <Link className="nav-link" to={{pathname: '/generate', state: {add: true}}}>Сгенерировать</Link>
                     </li>
                 </ul>
                 <form className="form-inline my-2 my-lg-0">

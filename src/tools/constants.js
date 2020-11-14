@@ -1,0 +1,1 @@
+export const MAX_COUNT_PRODUCT_GENERATE = 75
