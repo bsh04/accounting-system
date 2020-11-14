@@ -1,6 +1,187 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d523a2ed-6894-4bc1-bf1b-91242b91318d" name="Default Changelist" comment="now everything through redux">
+      <change afterPath="$PROJECT_DIR$/src/redux/types.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tools/constants.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tools/idGenerator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomHeader.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CustomTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CustomTable.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Pagination.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pagination.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/DetailsProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/DetailsProduct.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Generate.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Generate.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/offsetActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/offsetActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/offsetReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/offsetReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/productsActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/productsActions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/productsReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/productsReducer.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1kC9ozAqDpNWtTiCBTCJIcuKHXO" />
+  <component name="ProjectViewState">
+    <option name="foldersAlwaysOnTop" value="false" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\WebStorm 2020.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\noteb\WebstormProjects\accounting-system\public" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d523a2ed-6894-4bc1-bf1b-91242b91318d" name="Default Changelist" comment="" />
+      <created>1605193884877</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605193884877</updated>
+      <workItem from="1605193885953" duration="1292000" />
+      <workItem from="1605195197750" duration="53000" />
+      <workItem from="1605195274960" duration="15723000" />
+      <workItem from="1605241842294" duration="30404000" />
+      <workItem from="1605291329609" duration="1338000" />
+      <workItem from="1605334068638" duration="88000" />
+      <workItem from="1605348650536" duration="7344000" />
+      <workItem from="1605357148606" duration="11671000" />
+    </task>
+    <task id="LOCAL-00001" summary="added base pages &amp;&amp; react-router &amp;&amp; capability browse, create and changed products through localStorage">
+      <created>1605206890659</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1605206890659</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added base pages &amp;&amp; react-router &amp;&amp; capability browse, create and changed products through localStorage#2">
+      <created>1605206952653</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1605206952653</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added redux">
+      <created>1605211047685</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1605211047685</updated>
+    </task>
+    <task id="LOCAL-00004" summary="now everything through redux">
+      <created>1605246527949</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1605246527949</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added search">
+      <created>1605249341606</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1605249341606</updated>
+    </task>
+    <task id="LOCAL-00006" summary="added pagination and fixing search">
+      <created>1605259236286</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1605259236286</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added modal &amp;&amp; now offset got of redux">
+      <created>1605286252876</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1605286252876</updated>
+    </task>
+    <task id="LOCAL-00008" summary="refactor#1">
+      <created>1605292481914</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1605292481914</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added base pages &amp;&amp; react-router &amp;&amp; capability browse, create and changed products through localStorage" />
+    <MESSAGE value="added base pages &amp;&amp; react-router &amp;&amp; capability browse, create and changed products through localStorage#2" />
+    <MESSAGE value="added redux" />
+    <MESSAGE value="now everything through redux" />
+    <MESSAGE value="added search" />
+    <MESSAGE value="added pagination and fixing search" />
+    <MESSAGE value="added modal &amp;&amp; now offset got of redux" />
+    <MESSAGE value="refactor#1" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor#1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="552" y="178" width="816" height="729" key="#Intentions" timestamp="1605349429050">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="178" width="816" height="729" key="#Intentions/0.0.1920.1040@0.0.1920.1040" timestamp="1605349429050" />
+    <state x="716" y="322" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1605207308959">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="716" y="322" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1605207308959" />
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1605204643131">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="267" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605204643131" />
+    <state x="585" y="88" key="CommitChangelistDialog2" timestamp="1605292481148">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="585" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1605292481148" />
+    <state x="629" y="298" key="EditFileWatcherDialog" timestamp="1605195415305">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="629" y="298" key="EditFileWatcherDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605195415305" />
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1605354256535">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605354256535" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1605292483789">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605292483789" />
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605203226665">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="777" y="434" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1605203226665" />
+    <state x="667" y="253" width="585" height="534" key="find.popup" timestamp="1605368925855">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="667" y="253" width="585" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605368925855" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1605358160729">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605358160729" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1605368890906">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1605368890906" />
   </component>
 </project>
