@@ -5,9 +5,9 @@ import {useDispatch} from "react-redux";
 import {AlertContext} from "../context/AlertContext";
 import {IDGenerator} from "../tools/idGenerator";
 import {MAX_COUNT_PRODUCT_GENERATE} from '../tools/constants'
-import {generateProducts} from "../redux/productsActions";
+import {generateProducts} from "../redux/actions/productsActions";
 
-export const Generate = (props) => {
+const Generate = (props) => {
 
     const [count, setCount] = useState('')
 
@@ -59,3 +59,5 @@ export const Generate = (props) => {
         </div>
     );
 };
+
+export default Generate

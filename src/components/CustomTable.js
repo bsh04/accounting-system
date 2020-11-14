@@ -1,17 +1,16 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import SearchIcon from '@material-ui/icons/Search';
 import {useDispatch, useSelector} from "react-redux";
 import {Pagination} from "./Pagination";
-import {removeProduct} from "../redux/productsActions";
-import {updateOffset} from "../redux/offsetActions";
+import {removeProduct} from "../redux/actions/productsActions";
+import {updateOffset} from "../redux/actions/offsetActions";
+import {NUMBER_ITEMS_DISPLAYED} from '../tools/constants'
 
 export const CustomTable = ({history}) => {
 
     const dispatch = useDispatch()
-
-    // localStorage.clear()
 
     const initStateProducts = useSelector(state => state.products)
     const productOffset = Number(useSelector(state => state.offset).offset)
@@ -70,8 +69,12 @@ export const CustomTable = ({history}) => {
 
     useEffect(() => {
         setSelectPage(1)
-        handleCutListProduct()
+        handleCutListProduct(1)
     }, [productOffset])
+
+    const renderDropdownItems = () => NUMBER_ITEMS_DISPLAYED.map((item, index) =>
+        <a className="dropdown-item" key={index} onClick={() => dispatch(updateOffset(item))}>{item}</a>
+    )
 
     const renderItems = () => {
         return products.map((item, index) => {
@@ -100,7 +103,7 @@ export const CustomTable = ({history}) => {
     return (
         <div>
             <div className='table-container'>
-                <div className="input-group flex-nowrap w-50">
+                <div className="input-group flex-nowrap table-container__search">
                     <div className="input-group-prepend">
                         <span className="input-group-text" id="addon-wrapping"><SearchIcon/></span>
                     </div>
@@ -115,11 +118,8 @@ export const CustomTable = ({history}) => {
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {productOffset === 0 ? 'Все' : productOffset}
                     </button>
-                    <div className="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
-                        <a className="dropdown-item" onClick={() => dispatch(updateOffset(5))}>5</a>
-                        <a className="dropdown-item" onClick={() => dispatch(updateOffset(10))}>10</a>
-                        <a className="dropdown-item" onClick={() => dispatch(updateOffset(25))}>25</a>
-                        <a className="dropdown-item" onClick={() => dispatch(updateOffset(0))}>Все</a>
+                    <div className="dropdown-menu">
+                        {renderDropdownItems()}
                     </div>
                 </div>
             </div>

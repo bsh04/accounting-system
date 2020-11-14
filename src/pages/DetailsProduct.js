@@ -2,11 +2,11 @@ import React, {useContext, useEffect, useState} from 'react';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import {useDispatch} from "react-redux";
 import {AlertContext} from "../context/AlertContext";
-import '../index.scss'
-import {addItem, addProduct, updateProduct} from "../redux/productsActions";
+import {addProduct, updateProduct} from "../redux/actions/productsActions";
 import {IDGenerator} from "../tools/idGenerator";
+import '../index.scss'
 
-export const DetailsProduct = (props) => {
+const DetailsProduct = (props) => {
 
     const alert = useContext(AlertContext)
     const dispatch = useDispatch()
@@ -27,7 +27,7 @@ export const DetailsProduct = (props) => {
             setCount(state.item.count)
             setId(state.item.id)
         }
-    }, [])
+    }, [props.location.state])
 
     const validator = () => {
         if (name.trim() !== '' && count.trim() !== '') {
@@ -88,10 +88,12 @@ export const DetailsProduct = (props) => {
                 }
                 <button className="btn btn-success"
                         onClick={(e) => handleSubmit(e)}>{isAdding ? 'Создать' : 'Применить изменения'}</button>
-                <button className="btn btn-primary ml-4"
+                <button className="btn btn-primary"
                         onClick={() => props.history.push('/')}><ArrowBackIcon className='mr-2'/>Вернуться к таблице
                 </button>
             </form>
         </div>
     );
 };
+
+export default DetailsProduct

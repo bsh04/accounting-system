@@ -6,7 +6,7 @@ import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import '../index.scss'
 
 
-export const Pagination = ({numberOfPages = 1, initialPage = parsePage(), onPageSelect = 1}) => {
+export const Pagination = ({numberOfPages = 1, initialPage, onPageSelect = 1}) => {
     const [currentPage, setCurrentPage] = useState(initialPage);
     const [isMounted, setMounted] = useState(false);
 
@@ -92,13 +92,4 @@ export const Pagination = ({numberOfPages = 1, initialPage = parsePage(), onPage
     }
 
     return null
-}
-
-function parsePage() {
-    let result = window.location.href.split('page=')[1];
-    if (result) {
-        result = result.split('&')[0];
-    }
-
-    return parseInt(result) || 1;
 }

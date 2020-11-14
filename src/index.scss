@@ -27,6 +27,17 @@ code {
   }
 }
 
+.loading {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
 .custom-pagination {
   display: flex;
   flex-flow: row nowrap;
@@ -109,10 +120,18 @@ code {
 
   }
 
+  &__search {
+    width: 50%;
+  }
+
 
   @media screen and (max-width: 1000px) {
     flex-direction: column;
     align-items: center;
+
+    &__search {
+      width: 80%;
+    }
 
     & .dropdown {
       margin-top: 20px;
@@ -131,6 +150,10 @@ code {
   & form {
     padding-top: 20px;
 
+    & button:not(:first-child) {
+      margin-right: 20px;
+    }
+
     & .count-input {
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
@@ -148,6 +171,28 @@ code {
       border: 5px solid red;
     }
   }
+
+  @media screen and (max-width: 768px) {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    & h1 {
+      text-align: center;
+    }
+
+    & form {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+
+      & button {
+        margin-bottom: 20px;
+        width: 100%;
+      }
+    }
+  }
 }
 
 .custom-alert-container {
@@ -157,14 +202,12 @@ code {
   height: 100vh;
 
   &__show {
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     z-index: 1;
     transition: background .3s ease-in;
   }
 
   &__close {
-    z-index: -1;
-    transition: background .3s ease-in;
   }
 }
 
@@ -178,7 +221,7 @@ code {
   right: 0;
   margin: auto;
   background-color: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   padding: 20px;
   height: 150px;
   width: 500px;

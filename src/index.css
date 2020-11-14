@@ -20,6 +20,17 @@ code {
   padding-top: 20px;
 }
 
+.loading {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
 .custom-pagination {
   display: flex;
   flex-flow: row nowrap;
@@ -83,10 +94,16 @@ code {
   cursor: pointer;
   text-align: right;
 }
+.table-container__search {
+  width: 50%;
+}
 @media screen and (max-width: 1000px) {
   .table-container {
     flex-direction: column;
     align-items: center;
+  }
+  .table-container__search {
+    width: 80%;
   }
   .table-container .dropdown {
     margin-top: 20px;
@@ -102,6 +119,9 @@ code {
 .add-product-container form {
   padding-top: 20px;
 }
+.add-product-container form button:not(:first-child) {
+  margin-right: 20px;
+}
 .add-product-container form .count-input {
   /* Firefox */
 }
@@ -115,6 +135,25 @@ code {
 .add-product-container form_error-input {
   border: 5px solid red;
 }
+@media screen and (max-width: 768px) {
+  .add-product-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .add-product-container h1 {
+    text-align: center;
+  }
+  .add-product-container form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .add-product-container form button {
+    margin-bottom: 20px;
+    width: 100%;
+  }
+}
 
 .custom-alert-container {
   position: absolute;
@@ -127,11 +166,6 @@ code {
   z-index: 1;
   transition: background 0.3s ease-in;
 }
-.custom-alert-container__close {
-  z-index: -1;
-  transition: background 0.3s ease-in;
-}
-
 .custom-alert {
   position: absolute;
   display: flex;

@@ -1,1 +1,2 @@
 export const MAX_COUNT_PRODUCT_GENERATE = 75
+export const NUMBER_ITEMS_DISPLAYED = [5, 10, 25, 0]
