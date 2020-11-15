@@ -1,9 +1,9 @@
 import * as types from "../types";
 
-const store = () => JSON.parse(localStorage.getItem('products'))
+const store = () => localStorage.getItem('products') ? JSON.parse(localStorage.getItem('products')) : []
 
 const initialState = {
-    products: store() ? store() : []
+    products: store()
 }
 
 const setProduct = products => localStorage.setItem('products', JSON.stringify(products))
