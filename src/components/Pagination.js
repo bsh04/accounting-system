@@ -24,7 +24,7 @@ export const Pagination = ({numberOfPages = 1, initialPage, onPageSelect = 1}) =
                 top: 0,
                 behavior: "smooth"
             });
-            onPageSelect(currentPage);
+            onPageSelect(!currentPage ? 1 : currentPage);
         }
     }, [currentPage])
 

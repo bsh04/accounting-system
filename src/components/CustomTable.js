@@ -33,6 +33,7 @@ export const CustomTable = ({history}) => {
 
     // Обработчик количетва отображаемых товаров на странице
     const handleCutListProduct = (page = selectPage) => {
+
         let state = searchValue.trim() !== '' ? searchProducts : initStateProducts.products
         if (page === 1) {
             setProducts(state.slice(0, productOffset !== 0 ? productOffset : state.length))
@@ -78,7 +79,7 @@ export const CustomTable = ({history}) => {
 
     // Рендер варинтов "Товаров на странице"
     const renderDropdownItems = () => NUMBER_ITEMS_DISPLAYED.map((item, index) =>
-        <a className="dropdown-item" key={index} onClick={() => dispatch(updateOffset(item))}>{item}</a>
+        <a className="dropdown-item" key={index} onClick={() => dispatch(updateOffset(item))}>{item === 0 ? 'Все' : item}</a>
     )
 
     // Рендер данных таблицы

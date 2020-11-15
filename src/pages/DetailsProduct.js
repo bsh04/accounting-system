@@ -74,6 +74,7 @@ const DetailsProduct = (props) => {
                     <label htmlFor="name">Название товара</label>
                     <input type="text" className={`form-control`}
                            id="name"
+                           maxLength={30}
                            onChange={(e => setName(e.target.value))} value={name}/>
                 </div>
                 <div className="form-group">
