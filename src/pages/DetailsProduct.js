@@ -1,5 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import AddIcon from '@material-ui/icons/Add';
+import CheckIcon from '@material-ui/icons/Check';
 import {useDispatch} from "react-redux";
 import {AlertContext} from "../context/AlertContext";
 import {addProduct, updateProduct} from "../redux/actions/productsActions";
@@ -17,7 +19,7 @@ const DetailsProduct = (props) => {
     const [more, setMore] = useState(false)
     const [isAdding, setIsAdding] = useState(false)
 
-
+    // Определение типа формы (добавление / редактирование)
     useEffect(() => {
         let state = props.location.state
         if (state.add) {
@@ -29,6 +31,7 @@ const DetailsProduct = (props) => {
         }
     }, [props.location.state])
 
+    // Валидатор формы
     const validator = () => {
         if (name.trim() !== '' && count.trim() !== '') {
             return true
@@ -38,8 +41,9 @@ const DetailsProduct = (props) => {
         }
     }
 
+    // Обработчик создания продукта
     const handleCreate = () => {
-        dispatch(addProduct({name, count, id: IDGenerator()}))
+        dispatch(addProduct({name, count, id: IDGenerator()})) // Рандомный ID
         if (more) {
             setCount('')
             setName('')
@@ -48,12 +52,13 @@ const DetailsProduct = (props) => {
         }
     }
 
+    // Обработчик изменения продукта
     const handleChange = () => {
         dispatch(updateProduct({name, count, id}))
         props.history.push('/')
     }
 
-
+    // Обработчик запроса
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (validator()) {
@@ -66,28 +71,36 @@ const DetailsProduct = (props) => {
             <h1>{isAdding ? 'Добавление' : 'Изменение'} товара</h1>
             <form>
                 <div className="form-group">
-                    <label htmlFor="exampleInputEmail1">Название товара</label>
-                    <input type="email" className={`form-control`}
-                           id="exampleInputEmail1" aria-describedby="emailHelp"
+                    <label htmlFor="name">Название товара</label>
+                    <input type="text" className={`form-control`}
+                           id="name"
                            onChange={(e => setName(e.target.value))} value={name}/>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Количество</label>
+                    <label htmlFor="count">Количество</label>
                     <input type="number" className={`form-control count-input`}
-                           id="exampleInputPassword1"
+                           id="count"
                            onChange={e => setCount(e.target.value)} value={count}/>
                 </div>
                 {
                     isAdding
                     &&
                     <div className="form-group form-check">
-                        <input type="checkbox" className="form-check-input" id="exampleCheck1" value={more}
+                        <input type="checkbox" className="form-check-input" id="more" value={more}
                                onChange={() => setMore(!more)}/>
-                        <label className="form-check-label" htmlFor="exampleCheck1">Добавить ещё один</label>
+                        <label className="form-check-label" htmlFor="more">Добавить ещё один</label>
                     </div>
                 }
                 <button className="btn btn-success"
-                        onClick={(e) => handleSubmit(e)}>{isAdding ? 'Создать' : 'Применить изменения'}</button>
+                        onClick={(e) => handleSubmit(e)}>
+                    {
+                        isAdding
+                            ?
+                            <AddIcon className='mr-2'/>
+                            :
+                            <CheckIcon className='mr-2'/>
+                    }
+                    {isAdding ? 'Создать' : 'Применить изменения'}</button>
                 <button className="btn btn-primary"
                         onClick={() => props.history.push('/')}><ArrowBackIcon className='mr-2'/>Вернуться к таблице
                 </button>

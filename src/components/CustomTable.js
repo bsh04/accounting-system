@@ -20,6 +20,7 @@ export const CustomTable = ({history}) => {
     const [selectPage, setSelectPage] = useState(1)
     const [searchProducts, setSearchProducts] = useState([])
 
+    // Обработчик поиска
     const handleSearch = () => {
         let arr = []
         for (let i = 0; i < initStateProducts.products.length; i++) {
@@ -27,10 +28,10 @@ export const CustomTable = ({history}) => {
                 arr.push(initStateProducts.products[i])
             }
         }
-
         setSearchProducts(arr)
     }
 
+    // Обработчик количетва отображаемых товаров на странице
     const handleCutListProduct = (page = selectPage) => {
         let state = searchValue.trim() !== '' ? searchProducts : initStateProducts.products
         if (page === 1) {
@@ -46,6 +47,7 @@ export const CustomTable = ({history}) => {
         }
     }
 
+    // Вызывается при поиске
     useEffect(() => {
         setSelectPage(1)
         if (searchValue.trim() === '') {
@@ -56,26 +58,30 @@ export const CustomTable = ({history}) => {
         }
     }, [searchValue])
 
-
+    // Вызывается при смене страницы и при поиске
     useEffect(() => {
         handleCutListProduct()
     }, [selectPage, searchProducts])
 
+    // Вызывается при изменении количества товаров в localStorage
     useEffect(() => {
         handleSearch()
         setProducts(initStateProducts.products)
         handleCutListProduct()
     }, [initStateProducts])
 
+    // Вызывается при изменении "Товаров на странице"
     useEffect(() => {
         setSelectPage(1)
         handleCutListProduct(1)
     }, [productOffset])
 
+    // Рендер варинтов "Товаров на странице"
     const renderDropdownItems = () => NUMBER_ITEMS_DISPLAYED.map((item, index) =>
         <a className="dropdown-item" key={index} onClick={() => dispatch(updateOffset(item))}>{item}</a>
     )
 
+    // Рендер данных таблицы
     const renderItems = () => {
         return products.map((item, index) => {
             return (

@@ -5,7 +5,6 @@ import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 import MoreHorizIcon from "@material-ui/icons/MoreHoriz";
 import '../index.scss'
 
-
 export const Pagination = ({numberOfPages = 1, initialPage, onPageSelect = 1}) => {
     const [currentPage, setCurrentPage] = useState(initialPage);
     const [isMounted, setMounted] = useState(false);
@@ -18,6 +17,7 @@ export const Pagination = ({numberOfPages = 1, initialPage, onPageSelect = 1}) =
         setCurrentPage(initialPage)
     }, [initialPage])
 
+    // Вызывается при переключении страницы
     useEffect(() => {
         if (isMounted) {
             window.scrollTo({
@@ -28,7 +28,7 @@ export const Pagination = ({numberOfPages = 1, initialPage, onPageSelect = 1}) =
         }
     }, [currentPage])
 
-
+    // Функция создания пагинации (стрелки && номера страниц)
     function makePagesArray() {
         let arr = new Array(numberOfPages)
             .fill('')
@@ -49,7 +49,6 @@ export const Pagination = ({numberOfPages = 1, initialPage, onPageSelect = 1}) =
             .filter((item, index, arr) => arr.indexOf(item) === index)
             .map((item, index, arr) => (item + 1 !== arr[index + 1] && index !== arr.length - 1) ? [item, 'dotted'] : item)
             .flat(1);
-
     }
 
     if (numberOfPages !== 0) {
@@ -90,6 +89,5 @@ export const Pagination = ({numberOfPages = 1, initialPage, onPageSelect = 1}) =
             </div>
         )
     }
-
     return null
 }

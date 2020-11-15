@@ -15,8 +15,8 @@ function App() {
 
     return (
         <AlertContext.Provider value={{
-            alertState: () => alert,
-            setAlertState: ({show, title}) => setAlert({show: show, title: title}),
+            alertState: () => alert, // Получение состояния алерта
+            setAlertState: ({show, title}) => setAlert({show: show, title: title}), // изменение состония алерта
         }}>
             <CustomAlert isShow={alert.show} type={alert.type} title={alert.title}/>
             <Router>

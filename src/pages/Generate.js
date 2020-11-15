@@ -4,26 +4,23 @@ import randomWords from 'random-words';
 import {useDispatch} from "react-redux";
 import {AlertContext} from "../context/AlertContext";
 import {IDGenerator} from "../tools/idGenerator";
-import {MAX_COUNT_PRODUCT_GENERATE} from '../tools/constants'
 import {generateProducts} from "../redux/actions/productsActions";
+import {MAX_COUNT_PRODUCT_GENERATE} from '../tools/constants'
 
 const Generate = (props) => {
 
     const [count, setCount] = useState('')
-
     const dispatch = useDispatch()
-
     const alert = useContext(AlertContext)
 
+    // Обработчик создания новых товаров
     const handleCreate = e => {
         e.preventDefault()
-
         let arr = []
-
         if (count <= MAX_COUNT_PRODUCT_GENERATE && Number(count) !== 0 && count !== '') {
             for (let i = 0; i < count; i++) {
                 arr.push({
-                    id: IDGenerator(),
+                    id: IDGenerator(), // Рандомный ID
                     name: randomWords(),
                     count: (Math.random() * 100).toFixed()
                 })
@@ -31,9 +28,11 @@ const Generate = (props) => {
 
             dispatch(generateProducts(arr))
             props.history.push('/')
-
         } else {
-            alert.setAlertState({show: true, title: `Введите корректное значение (от 1 до ${MAX_COUNT_PRODUCT_GENERATE})`})
+            alert.setAlertState({
+                show: true,
+                title: `Введите корректное значение (от 1 до ${MAX_COUNT_PRODUCT_GENERATE})`
+            })
         }
     }
 
@@ -42,9 +41,10 @@ const Generate = (props) => {
             <h1>Сгенерировать товары</h1>
             <form>
                 <div className="form-group">
-                    <label htmlFor="exampleInputPassword1">Количество</label>
+                    <label htmlFor="number">Количество</label>
                     <input type="number" className={`form-control count-input`}
-                           id="exampleInputPassword1"
+                           id="number"
+                           placeholder={`Допустимое значение от 1 до ${MAX_COUNT_PRODUCT_GENERATE}`}
                            onChange={e => setCount(e.target.value)} value={count}/>
                     <small id="emailHelp" className="form-text text-muted"><strong>Внимание!</strong> Все данные из
                         таблицы удалятся</small>
